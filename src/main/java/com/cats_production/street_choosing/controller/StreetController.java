@@ -1,5 +1,7 @@
 package com.cats_production.street_choosing.controller;
 
+import com.cats_production.street_choosing.entity.Street;
+import com.cats_production.street_choosing.service.StreetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,7 +9,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController()
+
+@RestController
 @RequestMapping("/streets")
 public class StreetController {
 
@@ -15,13 +18,13 @@ public class StreetController {
     private StreetService streetService;
 
 
-    @GetMapping("/")
+    @GetMapping
     public Street getRandomStreet(){
-        return streetService.getRandomStreet();
+        return streetService.getRandomNotVisitedStreet();
     }
 
     @PutMapping("/{id}")
-    public void setStreetIsVisited(@PathVariable Integer id){
-        streetService.setStreetIsVisited(id);
+    public void setStreetAsVisited(@PathVariable Integer id){
+        streetService.setAsVisited(id);
     }
 }

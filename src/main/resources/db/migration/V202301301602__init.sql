@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS street
     id          SERIAL          PRIMARY KEY,
     city_id     INT             NOT NULL,
     name        VARCHAR(100)    NOT NULL,
-    visited     BOOLEAN         DEFAULT FALSE
+    is_visited  BOOLEAN         DEFAULT FALSE
 );
