@@ -6,6 +6,8 @@ import com.cats_production.street_choosing.service.StreetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class StreetServiceImpl implements StreetService {
 
@@ -23,5 +25,11 @@ public class StreetServiceImpl implements StreetService {
         Street street = streetRepository.getReferenceById(id);
         street.setVisited(true);
         streetRepository.save(street);
+    }
+
+    @Override
+    public ArrayList<Street> getVisitedStreets() {
+        ArrayList<Street> visitedStreets = streetRepository.getVisitedStreets();
+        return visitedStreets;
     }
 }

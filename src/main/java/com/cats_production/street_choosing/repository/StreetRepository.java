@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+
 @Repository
 public interface StreetRepository extends JpaRepository<Street, Integer> {
 
@@ -13,4 +15,7 @@ public interface StreetRepository extends JpaRepository<Street, Integer> {
             "ORDER BY RANDOM() " +
             "LIMIT 1 ")
     Street getRandomNotVisitedStreet();
+
+    @Query("Select s from Street s where s.visited=true")
+    ArrayList<Street> getVisitedStreets();
 }
