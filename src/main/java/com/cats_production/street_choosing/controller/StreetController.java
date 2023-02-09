@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/streets")
@@ -26,5 +28,10 @@ public class StreetController {
     @PutMapping("/{id}")
     public void setStreetAsVisited(@PathVariable Integer id){
         streetService.setAsVisited(id);
+    }
+
+    @GetMapping("/visited")
+    public List<Street> getVisitedStreets() {
+        return streetService.getVisitedStreets();
     }
 }
